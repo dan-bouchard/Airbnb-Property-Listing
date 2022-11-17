@@ -5,3 +5,4 @@ __pycache__/
 
 airbnb-property-listings.zip
 processed_images/*
+runs/*
