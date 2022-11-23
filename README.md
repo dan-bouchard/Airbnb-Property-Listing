@@ -1,16 +1,11 @@
 # Airbnb-Property-Listing
 
-> A project to predict the price of an Airbnb listing from tabular, text and image data
+> A project to predict the price and category of an Airbnb listing from tabular and text data
 
 ## Data Preparation
 
  - Loaded in and cleaned tabular data, both numerical and text into a useable format
  - Filled in missing data with sensible values and dropped any data that can't be imputed
- - Processed image data, such that every image is in RGB format and has the same image height, with the aspect ratio of the image being maintained
-
- **Original**                                              | **Processed**
-----------------------------------------------------------|-------------------------------------------------------
-<img src="./imgs/0a26e526-1adf-4a2a-888d-a05f7f0a2f33-a_original.png" />  |<img src="./imgs/0a26e526-1adf-4a2a-888d-a05f7f0a2f33-a_processed.png" />
 
 ## Regression Modelling
 
@@ -30,3 +25,23 @@
 - Tuned the parameters of a Linear Ridge Regression model and a Random Forest Regression model
 - Used RMS as the evaluation metric
 - Improved upon the score of the linear model with the Random Forest model, however it is still overfitting
+
+## Classification Modelling
+
+ - Used the same numeric features as above to create a classification model to predict the category of each listing, which was one of:
+    - Amazing Pools
+    - Beachfront
+    - Chalets
+    - Offbeat
+    - Treehouses
+ - Improved upon a baseline Logistic Regression model by tuning a Random Forest Classifier
+ - Used Tf-Idf for feature engineering the text description column and fitted a baseline Logistic Regression model
+ - Vastly improved performance compared to the numerical data
+ - Used the `optuna` library to perform hyper-parameter tuning on the pipeline fitted with a Random Forest Classifier
+
+ ## Feed-forward neural network
+
+ - Used the same regression problem as before to train a 2-layer feed-forward neural network in PyTorch
+ - Made sure to scale the inputs and outputs to avoid a exploding gradient problem
+ - Visualised the RMS Error on the training and validation set
+ - Evaluating the test set with the final trained model
